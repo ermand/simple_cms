@@ -1,0 +1,40 @@
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link')  %>
+
+<div class="section new">
+  <h2>Create Section</h2>
+
+  <%= form_for(:section, :url => {:action => 'create'}) do |f| %>
+    <table summary="Section form fields">
+      <tr>
+        <th>Page</th>
+        <th><%= f.select :page_id, @pages.collect {|e| [ e.name, e.id ] }, { :include_blank => true } %></th>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <th><%= f.text_field(:name) %></th>
+      </tr>
+      <tr>
+        <th>Position</th>
+        <th><%= f.text_field(:position) %></th>
+      </tr>
+      <tr>
+        <th>Visible</th>
+        <th><%= f.text_field(:visible) %></th>
+      </tr>
+      <tr>
+        <th>Content Type</th>
+        <th><%= f.text_field(:content_type) %></th>
+      </tr>
+      <tr>
+        <th>Content</th>
+        <th><%= f.text_are(:content, size: "60x12") %></th>
+      </tr>
+
+    </table>
+
+    <div class="form-buttons">
+      <%= submit_tag("Create section") %>
+    </div>
+
+  <% end %>
+</div>

@@ -17,9 +17,10 @@ class SubjectsController < ApplicationController
   def create
     # Instantiate a new object using form parameters
     @subject = Subject.new(subject_params)
-    # Save the obejct
+    # Save the object
     if @subject.save
       # If save succeds, redirect to the index action
+      flash[:notice] = "Subject created successfully."
       redirect_to(:action => 'index')
     else
       # If save fails, redisplay the form so user can fix problems
@@ -37,6 +38,7 @@ class SubjectsController < ApplicationController
     # Update the obejct
     if @subject.update_attributes(subject_params)
       # If update succeds, redirect to the index action
+      flash[:notice] = "Subject updated successfully."
       redirect_to(:action => 'show', :id => @subject.id)
     else
       # If update fails, redisplay the form so user can fix problems
@@ -50,6 +52,7 @@ class SubjectsController < ApplicationController
 
   def destroy
     subject = Subject.find(params[:id]).destroy
+    flash[:notice] = "Subject '#{subject.name}' destroyed successfully."
     redirect_to(:action => 'index')
   end
 
