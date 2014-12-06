@@ -3,13 +3,11 @@
 <div class="section new">
   <h2>Create Section</h2>
 
-  <%= form_for(:section, :url => {:action => 'create'}) do |f| %>
+  <%= form_for(:section, :url => {:action => 'create'}, :html => {:class => 'form-horizontal'} ) do |f| %>
 
     <%= render(:partial => "form", :locals => {:f => f})  %>
 
-    <div class="form-buttons">
-      <%= submit_tag("Create section") %>
-    </div>
+    <%= render(:partial => "partials/submit_button")  %>
 
   <% end %>
 </div>

@@ -1,26 +1,41 @@
-<table summary="Subejct form fields">
-  <tr>
-    <th>Page</th>
-    <th><%= f.select :page_id, @pages.collect {|e| [ e.name, e.id ] } %></th>
-  </tr>
-  <tr>
-    <th>Name</th>
-    <th><%= f.text_field(:name) %></th>
-  </tr>
-  <tr>
-    <th>Position</th>
-    <th><%= f.text_field(:position) %></th>
-  </tr>
-  <tr>
-    <th>Visible</th>
-    <th><%= f.text_field(:visible) %></th>
-  </tr>
-  <tr>
-    <th>Content Type</th>
-    <th><%= f.text_field(:content_type) %></th>
-  </tr>
-  <tr>
-    <th>Content</th>
-    <th><%= f.text_area(:content, size: "30x4") %></th>
-  </tr>
-</table>
+<div class="form-group">
+  <%= f.label(:page_id, "Page", :class => 'col-sm-3 control-label')  %>
+  <div class="col-sm-6">
+    <%= f.select :page_id, @pages.collect {|e| [ e.name, e.id ] }, {:include_blank => "-- Select --"}, {:class => 'form-control'} %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label(:name, :class => 'col-sm-3 control-label')  %>
+  <div class="col-sm-6">
+    <%= f.text_field(:name, {:class => 'form-control'}) %>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.label(:position, :class => 'col-sm-3 control-label')  %>
+  <div class="col-sm-6">
+    <%= f.text_field(:position, {:class => 'form-control'}) %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label(:visible, :class => 'col-sm-3 control-label')  %>
+  <div class="col-sm-6">
+    <%= f.check_box(:visible) %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label(:content_type, :class => 'col-sm-3 control-label')  %>
+  <div class="col-sm-6">
+    <%= f.radio_button(:content_type, "text") %> Text
+    <%= f.radio_button(:content_type, "HTML") %> HTML
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label(:content, :class => 'col-sm-3 control-label')  %>
+  <div class="col-sm-6">
+    <%= f.text_area(:content, :class => 'form-control', size: "30x4") %>
+  </div>
+</div>

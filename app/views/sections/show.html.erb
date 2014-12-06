@@ -1,9 +1,9 @@
-<%= link_to("<< Back to List", {:action => 'index'} , :class => 'back-link') %>
+<%= link_to("<< Back to List", {:action => 'index'} , :class => 'btn btn-default') %>
 
 <div class="sections show">
   <h2>Show section</h2>
 
-  <table summary="section detail view">
+  <table class="table table-striped table-bordered datatables" summary="section detail view">
     <tr>
       <th>Name</th>
       <th><%= @section.name %></th>

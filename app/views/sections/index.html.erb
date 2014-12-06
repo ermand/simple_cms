@@ -1,9 +1,10 @@
 <div class="sections index">
-  <h2>sections</h2>
+  <h2>Sections</h2>
 
-  <%= link_to("Add New Section", {:action => 'new'} , :class => 'action new') %>
+  <%= link_to("<span class='glyphicon glyphicon-plus'></span> Add New Section".html_safe, {:action => 'new'} , :class => 'btn btn-success btn-sm') %>
+  <hr>
 
-  <table class="listing" summary="section list">
+  <table class="table table-striped table-bordered datatables" summary="section list">
     <tr>
       <th></th>
       <th>Page</th>
@@ -20,9 +21,9 @@
       <td><%= section.content_type %></td>
       <td class="center"><%= status_tag(section.visible) %></td>
       <td>
-        <%= link_to("Show", {:action => 'show', :id => section.id}, :class => 'action show') %>
-        <%= link_to("Edit", {:action => 'edit', :id => section.id}, :class => 'action edit') %>
-        <%= link_to("Delete", {:action => 'delete', :id => section.id}, :class => 'action delete') %>
+        <%= link_to("Show", {:action => 'show', :id => section.id}, :class => 'btn btn-info btn-sm') %>
+        <%= link_to("Edit", {:action => 'edit', :id => section.id}, :class => 'btn btn-default btn-sm') %>
+        <%= link_to("Delete", {:action => 'delete', :id => section.id}, :class => 'btn btn-danger btn-sm') %>
       </td>
     </tr>
     <% end %>

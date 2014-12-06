@@ -1,22 +1,34 @@
-<table summary="Subejct form fields">
-  <tr>
-    <th>Subject</th>
-    <th><%= f.select :subject_id, @subjects.collect {|e| [ e.name, e.id ] }, { :include_blank => true } %></th>
-  </tr>
-  <tr>
-    <th>Name</th>
-    <th><%= f.text_field(:name) %></th>
-  </tr>
-  <tr>
-    <th>Permalink</th>
-    <th><%= f.text_field(:permalink) %></th>
-  </tr>
-  <tr>
-    <th>Position</th>
-    <th><%= f.text_field(:position) %></th>
-  </tr>
-  <tr>
-    <th>Visible</th>
-    <th><%= f.text_field(:visible) %></th>
-  </tr>
-</table>
+<div class="form-group">
+  <label class="col-sm-3 control-label" for="subject_id">Page</label>
+  <div class="col-sm-6">
+    <%= f.select :subject_id, @subjects.collect {|e| [ e.name, e.id ] }, { :include_blank => true }, {:class => 'form-control'} %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label(:name, :class => 'col-sm-3 control-label')  %>
+  <div class="col-sm-6">
+    <%= f.text_field(:name, {:class => 'form-control'}) %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label(:permalink, :class => 'col-sm-3 control-label')  %>
+  <div class="col-sm-6">
+    <%= f.text_field(:permalink, {:class => 'form-control'}) %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label(:position, :class => 'col-sm-3 control-label')  %>
+  <div class="col-sm-6">
+    <%= f.text_field(:position, {:class => 'form-control'}) %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label(:visible, :class => 'col-sm-3 control-label')  %>
+  <div class="col-sm-6">
+    <%= f.check_box(:visible) %>
+  </div>
+</div>

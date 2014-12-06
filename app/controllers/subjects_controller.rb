@@ -58,11 +58,11 @@ class SubjectsController < ApplicationController
 
   private
 
-    def subject_params
-      # same as using "params[:subject]", except that it:
-      # - raises an error if :subject is not present
-      # - allows listed attributes to be mass-assigned
-      params.require(:subject).permit(:name, :position, :visible)
-    end
+  def subject_params
+    # same as using "params[:subject]", except that it:
+    # - raises an error if :subject is not present
+    # - allows listed attributes to be mass-assigned
+    params.require(:subject).permit(:name, :position, :visible)
+  end
 
 end

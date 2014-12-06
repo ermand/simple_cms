@@ -1,2 +1,16 @@
-<h1>Sections#delete</h1>
-<p>Find me in app/views/sections/delete.html.erb</p>
+<% @page_title = "Delete section" %>
+
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'btn btn-default')  %>
+
+<div class="section edit">
+  <h2>Delete Dection</h2>
+
+  <%= form_tag({:action => 'destroy', :id => @section.id}, :html => {:class => 'form-horizontal'}) do %>
+    <p>Are you sure you want to permanently delete this section?</p>
+
+    <p class="reference-name"><%= @section.name %></p>
+
+    <%= render(:partial => "partials/submit_button")  %>
+
+  <% end %>
+</div>

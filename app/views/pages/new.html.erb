@@ -3,13 +3,11 @@
 <div class="page new">
   <h2>Create Page</h2>
 
-  <%= form_for(:page, :url => {:action => 'create'}) do |f| %>
+  <%= form_for(:page, :url => {:action => 'create'}, :html => {:class => 'form-horizontal'}) do |f| %>
 
     <%= render(:partial => "form", :locals => {:f => f}) %>
 
-    <div class="form-buttons">
-      <%= submit_tag("Create Page") %>
-    </div>
+    <%= render(:partial => "partials/submit_button")  %>
 
   <% end %>
 </div>

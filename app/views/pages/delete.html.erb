@@ -1,18 +1,16 @@
 <% @page_title = "Delete page" %>
 
-<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link')  %>
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'btn btn-default')  %>
 
 <div class="Page edit">
   <h2>Delete page</h2>
 
-  <%= form_tag({:action => 'destroy', :id => @page.id}) do %>
+  <%= form_tag({:action => 'destroy', :id => @page.id}, :html => {:class => 'form-horizontal'}) do %>
     <p>Are you sure you want to permanently delete this page?</p>
 
     <p class="reference-name"><%= @page.name %></p>
 
-    <div class="form-buttons">
-      <%= submit_tag("Delete Page") %>
-    </div>
+    <%= render(:partial => "partials/submit_button")  %>
 
   <% end %>
 </div>

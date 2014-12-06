@@ -5,13 +5,11 @@
 <div class="subject new">
   <h2>Create Subject</h2>
 
-  <%= form_for(:subject, :url => {:action => 'create'}) do |f| %>
+  <%= form_for(:subject, :url => {:action => 'create'}, :html => {:class => 'form-horizontal'}) do |f| %>
 
     <%= render(:partial => "form", :locals => {:f => f}) %>
 
-    <div class="form-buttons">
-      <%= submit_tag("Create Subject") %>
-    </div>
+    <%= render(:partial => "partials/submit_button")  %>
 
   <% end %>
 </div>
