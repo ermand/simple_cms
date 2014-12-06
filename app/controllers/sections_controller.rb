@@ -1,9 +1,11 @@
 class SectionsController < ApplicationController
 
-  layout false
+  layout "admin"
 
   def index
     @sections = Section.sorted
+    @name = "Ermand";
+    @age = 1231;
   end
 
   def show
