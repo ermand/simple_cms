@@ -2,6 +2,8 @@ class SubjectsController < ApplicationController
 
   layout "admin"
 
+  before_action :confirm_logged_in
+
   def index
     @subjects = Subject.sorted
   end
@@ -12,6 +14,7 @@ class SubjectsController < ApplicationController
 
   def new
     @subject = Subject.new({:name => "Default"})
+    @subject_count = Subject.count + 1
   end
 
   def create
@@ -24,12 +27,14 @@ class SubjectsController < ApplicationController
       redirect_to(:action => 'index')
     else
       # If save fails, redisplay the form so user can fix problems
+      @subject_count = Subject.count + 1
       render('new')
     end
   end
 
   def edit
     @subject = Subject.find(params[:id])
+    @subject_count = Subject.count
   end
 
   def update
@@ -42,6 +47,7 @@ class SubjectsController < ApplicationController
       redirect_to(:action => 'show', :id => @subject.id)
     else
       # If update fails, redisplay the form so user can fix problems
+      @subject_count = Subject.count
       render('edit')
     end
   end
@@ -52,7 +58,7 @@ class SubjectsController < ApplicationController
 
   def destroy
     subject = Subject.find(params[:id]).destroy
-    flash[:notice] = "Subject '#{subject.name}' destroyed successfully."
+    flash[:notice] = "Subject '#{subject.name}' deleted successfully."
     redirect_to(:action => 'index')
   end
 

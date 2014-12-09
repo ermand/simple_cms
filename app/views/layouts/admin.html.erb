@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Simple CMS | <%= @page_title || "Admin" %> </title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
-
-<!--   <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="/css/font-awesome.min.css"/>
-  <link rel="stylesheet" href="/css/bootstrap-select.min.css"> -->
 
   <%= stylesheet_link_tag("application", :media => 'all') %>
 </head>
@@ -23,26 +19,25 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">Home</a>
-
       </div>
+
+      <%= render(:partial => "partials/navbar")  %>
+
     </div>
   </div>
 
   <div class="container">
-    <div class="row">
-      <ol class="breadcrumb bigger-110">
-        <!-- <li><a href="/">Faqja kryesore</a></li> -->
-      </ol>
-    </div>
-
+    <hr>
     <% if ! flash[:notice].blank? %>
-      <div class="notice">
+      <div class="alert alert-block alert-success">
+        <button type="button" class="close" data-dismiss="alert"> <i class="icon-remove"></i> </button>
+        <i class="gl icon-warning-sign orange"></i> <strong>Message!</strong>
         <%= flash[:notice] %>
       </div>
     <% end %>
 
     <div class="row">
-        <%= yield %>
+      <%= yield %>
     </div> <!-- /row -->
 
     <hr>
@@ -50,5 +45,7 @@
       <p>&copy; 2014</p>
     </footer>
   </div> <!-- /container -->
+
+  <%= javascript_include_tag("application") %>
 </body>
 </html>

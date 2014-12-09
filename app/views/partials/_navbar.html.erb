@@ -1,0 +1,28 @@
+<div class="navbar-collapse collapse navbar-ex1-collapse navbar-right">
+  <ul class="nav navbar-nav">
+    <li><a href="/admin">Admin</a></li>
+    <% if session[:user_id] %>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book bigger-120"></i> Menu <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to("Manage Content", :controller => 'subjects') %></li>
+          <li><%= link_to("Manage Admin Users", :controller => 'admin_users') %></li>
+          <li class="divider"></li>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+  <div class="navbar-right">
+    <ul class="nav navbar-nav">
+      <% if session[:user_id] %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user bigger-120"> </i><%= session[:username] %> <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to("Logout", :controller => 'access', :action => 'logout') %></li>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<!--/.navbar-collapse -->

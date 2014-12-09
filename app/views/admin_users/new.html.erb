@@ -1,11 +1,11 @@
-<% @page_title = "Edit subject" %>
+<% @page_title = "New User" %>
 
 <%= link_to("<< Back to List", {:action => 'index'}, :class => 'btn btn-default')  %>
 
-<div class="subject edit">
-  <h2>Update Subject</h2>
+<div class="user new">
+  <h2>Create Subject</h2>
 
-  <%= form_for(:subject, :url => {:action => 'update', :id => @subject.id}, :html => {:class => 'form-horizontal'}) do |f| %>
+  <%= form_for(:admin_user, :url => {:action => 'create'}, :html => {:class => 'form-horizontal'}) do |f| %>
 
     <%= render(:partial => "form", :locals => {:f => f}) %>
 

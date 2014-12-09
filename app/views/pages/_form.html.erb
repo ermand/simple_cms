@@ -1,7 +1,9 @@
+<%= error_messages_for(@page) %>
+
 <div class="form-group">
   <label class="col-sm-3 control-label" for="subject_id">Page</label>
   <div class="col-sm-6">
-    <%= f.select :subject_id, @subjects.collect {|e| [ e.name, e.id ] }, { :include_blank => true }, {:class => 'form-control'} %>
+    <%= f.select :subject_id, @subjects.collect {|s| [ s.name, s.id ] }, { :include_blank => true }, {:class => 'form-control'} %>
   </div>
 </div>
 
@@ -22,7 +24,7 @@
 <div class="form-group">
   <%= f.label(:position, :class => 'col-sm-3 control-label')  %>
   <div class="col-sm-6">
-    <%= f.text_field(:position, {:class => 'form-control'}) %>
+    <%= f.select(:position, 1..@page_count, {:class => 'form-control'}) %>
   </div>
 </div>
 

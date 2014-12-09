@@ -1,7 +1,9 @@
+<%= error_messages_for(@section) %>
+
 <div class="form-group">
   <%= f.label(:page_id, "Page", :class => 'col-sm-3 control-label')  %>
   <div class="col-sm-6">
-    <%= f.select :page_id, @pages.collect {|e| [ e.name, e.id ] }, {:include_blank => "-- Select --"}, {:class => 'form-control'} %>
+    <%= f.select :page_id, @pages.collect {|p| [ p.name, p.id ] }, {:include_blank => "-- Select --"}, {:class => 'form-control'} %>
   </div>
 </div>
 
@@ -14,7 +16,7 @@
 <div class="form-group">
   <%= f.label(:position, :class => 'col-sm-3 control-label')  %>
   <div class="col-sm-6">
-    <%= f.text_field(:position, {:class => 'form-control'}) %>
+    <%= f.select(:position, 1..@section_count, {:class => 'form-control'}) %>
   </div>
 </div>
 
@@ -28,7 +30,7 @@
 <div class="form-group">
   <%= f.label(:content_type, :class => 'col-sm-3 control-label')  %>
   <div class="col-sm-6">
-    <%= f.radio_button(:content_type, "text") %> Text
+    <%= f.radio_button(:content_type, "Text") %> Text
     <%= f.radio_button(:content_type, "HTML") %> HTML
   </div>
 </div>

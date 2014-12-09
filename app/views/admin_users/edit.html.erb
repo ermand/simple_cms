@@ -1,0 +1,15 @@
+<% @page_title = "Edit Admin user" %>
+
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'btn btn-default')  %>
+
+<div class="admin user edit">
+  <h2>Update Admin user</h2>
+
+  <%= form_for(:admin_user, :url => {:action => 'update', :id => @admin_user.id}, :html => {:class => 'form-horizontal'}) do |f| %>
+
+    <%= render(:partial => "form", :locals => {:f => f}) %>
+
+    <%= render(:partial => "partials/submit_button")  %>
+
+  <% end %>
+</div>

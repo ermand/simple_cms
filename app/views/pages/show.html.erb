@@ -1,4 +1,6 @@
-<%= link_to("<< Back to List", {:action => 'index'} , :class => 'back-link') %>
+<% @page_title = "Show page" %>
+
+<%= link_to("<< Back to List", {:action => 'index', :subject_id => @subject.id} , :class => 'btn btn-default') %>
 
 <div class="pages show">
   <h2>Show page</h2>

@@ -1,9 +1,9 @@
-<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link')  %>
+<%= link_to("<< Back to List", {:action => 'index', :page_id => @page.id}, :class => 'btn btn-default')  %>
 
 <div class="section edit">
   <h2>Update Section</h2>
 
-  <%= form_for(:section, :url => {:action => 'update', :id => @section.id}, :html => {:class => 'form-horizontal'}) do |f| %>
+  <%= form_for(:section, :url => {:action => 'update', :id => @section.id, :page_id => @page.id}, :html => {:class => 'form-horizontal'}) do |f| %>
 
     <%= render(:partial => "form", :locals => {:f => f})  %>
 
