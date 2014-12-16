@@ -1,3 +1,4 @@
+
 class Page < ActiveRecord::Base
 
   belongs_to :subject
@@ -20,16 +21,16 @@ class Page < ActiveRecord::Base
 
   private
 
-  def add_default_permalink
-    if permalink.blank?
-      self.permalink = "#{id}-#{name.parameterize}"
+    def add_default_permalink
+      if permalink.blank?
+        self.permalink = "#{id}-#{name.parameterize}"
+      end
     end
-  end
 
-  def touch_subject
-    # touch is similar to:
-    # subject.update_attribute(:updated_at, Time.now)
-    subject.touch
-  end
+    def touch_subject
+      # touch is similar to:
+      # subject.update_attribute(:updated_at, Time.now)
+      subject.touch
+    end
 
 end

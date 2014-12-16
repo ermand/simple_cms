@@ -6,6 +6,8 @@ class Section < ActiveRecord::Base
 
   acts_as_list :scope => :page
 
+  after_save :touch_page
+
   CONTENT_TYPES = ["Text", "HTML"]
 
   validates_presence_of :name
@@ -17,5 +19,11 @@ class Section < ActiveRecord::Base
   scope :invisible, lambda { where(:visible => false) }
   scope :sorted, lambda { order("sections.position ASC") }
   scope :newest_first, lambda { order("sections.created_at ASC") }
+
+  private
+
+    def touch_page
+      page.touch
+    end
 
 end
