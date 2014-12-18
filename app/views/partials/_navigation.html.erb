@@ -1,0 +1,13 @@
+<% subjects ||= [] %>
+<ul>
+  <% subjects.each do |subject| %>
+  <li>
+    <span class="bigger-110"><%= subject.name %></span>
+    <ul class="nav-menu">
+      <% subject.pages.visible.sorted.each do |page| %>
+      <li><%= link_to_unless_current(page.name, {:action => 'show', :permalink => page.permalink}) %></li>
+    <% end %>
+    </ul>
+  </li>
+  <% end %>
+</ul>

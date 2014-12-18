@@ -1,13 +1,18 @@
 <% @page_title = @page.name %>
-<h2><%= @page.name %></h2>
+<blockquote class="page-title text-left"><%= @page.name %></blockquote>
+<section id="comments" class="body">
+  <header>
+    <h4><strong>Sections</strong></h4>
+  </header>
+  <% @page.sections.visible.sorted.each do |section| %>
+    <ul id="posts-list" class="hfeed">
+      <% case section.content_type %>
+      <% when 'HTML' %>
+        <li class="no-comments"><%= raw(sanitize(section.content, :tags => ['strong', 'em', 'a'])) %></li>
+      <% when 'text' %>
+        <li class="no-comments"><%= section.content %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</section>
 
-<% @page.sections.visible.sorted.each do |section| %>
-  <div class="section">
-    <% case section.content_type %>
-    <% when 'HTML' %>
-      <%= raw(sanitize(section.content, :tags => ['strong', 'em', 'a'])) %>
-    <% when 'text' %>
-      <p><%= section.content %></p>
-    <% end %>
-  </div>
-<% end %>
