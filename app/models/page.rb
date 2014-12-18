@@ -1,4 +1,3 @@
-
 class Page < ActiveRecord::Base
 
   belongs_to :subject
@@ -9,6 +8,7 @@ class Page < ActiveRecord::Base
 
   before_validation :add_default_permalink
   after_save :touch_subject
+  after_destroy :delete_related_sections
 
   validates :name, :presence => true, :length => {:maximum => 255}
   validates :permalink, :presence => true, :length => {:maximum => 255}, :uniqueness => true
@@ -31,6 +31,13 @@ class Page < ActiveRecord::Base
       # touch is similar to:
       # subject.update_attribute(:updated_at, Time.now)
       subject.touch
+    end
+
+    def delete_related_sections
+      self.sections.each do |section|
+        # Or perhaps instead of destroy, you would move them to another page.
+        section.destroy
+      end
     end
 
 end

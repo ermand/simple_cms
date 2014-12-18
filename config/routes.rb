@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'subjects#index'
+  root 'public#index'
+
+  get 'show/:permalink', :to => 'public#show'
 
   get 'admin', :to => "access#index"
 
